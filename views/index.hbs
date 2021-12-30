@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Agun</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="public/css/style.css">
+</head>
+
+<body class="d-flex flex-column h-100">
+  <!-- Navbar -->
+  <nav class='navbar navbar-expand-lg navbar-light bg-white shadow py-3'>
+      <div class='container'>
+        <a class='navbar-brand' href='/'>
+          <img
+            src='public/assets/logo.png'
+            alt='logo_adbi'
+            width='100%'
+            height='30'
+          />
+        </a>
+        <button
+          class='navbar-toggler'
+          type='button'
+          data-bs-toggle='collapse'
+          data-bs-target='#navbarSupportedContent'
+          aria-controls='navbarSupportedContent'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+        >
+          <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+          <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+            <li class='nav-item'>
+              <a class='nav-link fw-bold text-green-teal' aria-current='page' href='/'>Home</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' aria-current='page' href='/blog'>Blog</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' aria-current='page' href='/contact-me'>Contact
+                Me</a>
+            </li>
+          </ul>
+          {{#if isLogin}}
+          <ul class='navbar-nav ms-auto mb-2 mb-lg-0'>
+            <li class='nav-item'>
+              <span class='nav-link btn btn-outline-white ms-3 px-4 rounded-pill'>Hi! {{user.name}}</span>
+            </li>
+            <li class='nav-item'>
+              <a
+                class='nav-link btn bg-green-teal text-white ms-3 px-4 rounded-pill'
+                aria-current='page'
+                href='/logout'
+              >Logout</a>
+            </li>
+          </ul>
+          {{else}}
+          <ul class='navbar-nav ms-auto mb-2 mb-lg-0'>
+            <li class='nav-item'>
+              <a
+                class='nav-link btn btn-outline-secondary ms-3 px-4 rounded-pill'
+                aria-current='page'
+                href='/sign-in'
+              >Sign In</a>
+            </li>
+            <li class='nav-item'>
+              <a
+                class='nav-link btn bg-green-teal text-white ms-3 px-4 rounded-pill'
+                aria-current='page'
+                href='/sign-up'
+              >Sign Up</a>
+            </li>
+          </ul>
+          {{/if}}
+        </div>
+      </div>
+  </nav>
+  <!-- End navbar -->
+
+  {{#if messages.success}}
+    <div
+      class='alert alert-success alert-dismissible fade show'
+      role='alert'
+    >
+      {{messages.success}}
+      <button
+        type='button'
+        class='btn-close'
+        data-bs-dismiss='alert'
+        aria-label='Close'
+      ></button>
+    </div>
+  {{/if}}
+
+  <main class="container-fuild d-flex align-items-center justify-content-center">
+    <!-- profile -->
+    <section class="profile me-5">
+      <div class="card shadow" style="width: 20rem;">
+        <img src="public/assets/profile.jpg" class="card-img-top p-3" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Agun</h5>
+          <p class="card-text">Saya merupakan alumni angkatan 2015 SMK Negeri 3 Karawang jurusan Teknik Komputer
+            Jaringan.</p>
+          <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">
+                  Experience
+                </th>
+                <th scope="col">
+                  Year
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each experiences}}
+                <tr>
+                  <td>{{this.experience}}</td>
+                  <td>{{this.year}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- end profile -->
+
+    <!-- skill -->
+    <section class="container-desc w-50">
+      <h3>What I do</h5>
+        <p>Saat ini saya sedang mengikuti bootcamp Fullstack Developer batch ke 29 yang di selenggarakan oleh
+          PT.DumbWays
+          Indonesia Teknologi.</p>
+        <div class="skill row row-cols-1 row-cols-md-4 g-4 mt-3">
+          <div class="col">
+            <div class="card border-0">
+              <img src="public/assets/html-5.png" class="card-img-top w-25" alt="...">
+              <div class="card-body  px-0">
+                <h5 class="card-title">HTML5</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0">
+              <img src="public/assets/css-3.png" class="card-img-top w-25" alt="...">
+              <div class="card-body px-0">
+                <h5 class="card-title">CSS3</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0">
+              <img src="public/assets/js.png" class="card-img-top w-25" alt="...">
+              <div class="card-body px-0">
+                <h5 class="card-title">JAVASCRIPT</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                  content.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0">
+              <img src="public/assets/bootstrap.png" class="card-img-top w-25" alt="...">
+              <div class="card-body px-0">
+                <h5 class="card-title">BOOTSTRAP</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                  content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social-media row mt-3">
+          <h3>Found Me On</h5>
+            <div>
+              <a href="https://facebook.com/gunfiftynine" target="_blank" class="me-2">
+                <img src="public/assets/icons/facebook.png" alt="facebook" width="30" height="30">
+              </a>
+              <a href="https://instagram.com/gunfiftynine" target="_blank" class="me-2">
+                <img src="public/assets/icons/instagram.png" alt="github" width="30" height="30">
+              </a>
+              <a href="https://twitter.com/gunfiftynine" target="_blank" class="me-2">
+                <img src="public/assets/icons/twitter.png" alt="twitter" width="30" height="30">
+              </a>
+              <a href="https://wa.me/6287879187897" target="_blank">
+                <img src="public/assets/icons/whatsapp.png" alt="whatsapp" width="30" height="30">
+              </a>
+            </div>
+        </div>
+    </section>
+    <!-- end skill -->
+  </main>
+
+  <footer class="footer mt-auto py-3 bg-white text-center">
+    <span class="text-muted">©2021 Agun.</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
